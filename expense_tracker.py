@@ -61,34 +61,34 @@ if username:
     choice = st.sidebar.radio("Menu", menu)
 
     if choice == "Add Expense":
-        st.subheader("➕ Add New Expense")
+        st.subheader("Add New Expense")
         category = st.text_input("Category")
         amount = st.text_input("Amount")
         note = st.text_input("Note (optional)")
 
         if st.button("Add Expense"):
             if category == "" or amount == "":
-                st.error("⚠️ Category and Amount are required!")
+                st.error("Category and Amount are required!")
             else:
                 try:
                     amount = float(amount)
                     add_expense(username, category, amount, note)
-                    st.success(f"✅ Expense Added: {category} - ₹{amount}")
+                    st.success(f"Expense Added: {category} - ₹{amount}")
                 except ValueError:
-                    st.error("⚠️ Amount must be a number!")
+                    st.error("Amount must be a number!")
 
     elif choice == "Show Summary":
-        st.subheader("📄 Expense Summary")
+        st.subheader("Expense Summary")
         df = load_data(username)
         if df.empty:
             st.info("No expenses yet!")
         else:
             st.dataframe(df)
             total = df["Amount"].sum()
-            st.write(f"### 💵 Total Spent: ₹{total}")
+            st.write(f"Total Spent: ₹{total}")
 
     elif choice == "Show Graph":
-        st.subheader("📊 Expenses by Category")
+        st.subheader("Expenses by Category")
         df = load_data(username)
         if df.empty:
             st.info("No expenses to plot!")
@@ -102,7 +102,7 @@ if username:
             st.pyplot(fig)
 
     elif choice == "Budget & Alerts":
-        st.subheader("💡 Budget Limit")
+        st.subheader("Budget Limit")
         df = load_data(username)
 
         budget = load_budget(username)
@@ -119,7 +119,7 @@ if username:
             st.write(f"Total amount spent: ₹{total_spent}")
 
             if total_spent > budget:
-                st.error("⚠️ You have exceeded your budget!")
+                st.error("You have crossed your budget!")
             else:
                 st.success(f"You are within your budget. Remaining balance: ₹{budget - total_spent}")
 
@@ -132,7 +132,7 @@ if username:
         st.subheader("🗑 Clear All Expenses")
         if st.button("Clear All Data"):
             clear_data(username)
-            st.success("✅ All expenses cleared!")
+            st.success("All expenses cleared!")
 
 else:
-    st.warning("👉 Please enter your username to continue.")
+    st.warning("Please enter your username to continue.")
