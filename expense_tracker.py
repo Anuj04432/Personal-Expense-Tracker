@@ -5,7 +5,6 @@ import csv
 import os
 from datetime import datetime
 
-# ---------- Helper Functions ----------
 def get_file_names(username):
     return f"expenses_{username}.csv", f"budget_{username}.txt"
 
@@ -13,6 +12,7 @@ def save_budget(username, amount):
     _, budget_file = get_file_names(username)
     with open(budget_file, "w") as f:
         f.write(str(amount))
+        
 
 def load_budget(username):
     _, budget_file = get_file_names(username)
@@ -47,7 +47,7 @@ def clear_data(username):
         writer = csv.writer(file)
         writer.writerow(["Date", "Category", "Amount", "Note"])
 
-# ---------- Streamlit App ----------
+# Streamlit App
 st.set_page_config(page_title="💰 My Personal Expenses", layout="centered")
 st.title("💰 My Personal Expenses Tracker")
 
