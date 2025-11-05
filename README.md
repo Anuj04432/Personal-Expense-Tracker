@@ -19,10 +19,9 @@ You can directly open the app using the url:https://personal-expense-tracker-02.
 
 ## Installation
 1. Clone the repository:
-git clone https://github.com/AnujWagmore/First_project.git
-cd First_project
+git clone https://github.com/Anuj04432/Personal-Expense-Tracker.git
 
-2. Install dependencies:
+3. Install dependencies:
 pip install streamlit pandas matplotlib
 
 ## Usage
